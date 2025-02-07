@@ -29,7 +29,7 @@
         x: 0,
         y: 0,
         speeds: {
-          accel: 1.01,
+          accel: 1.3,
           maxAccel: 1.5,
           drag: 0
         },
@@ -44,14 +44,14 @@
       function draw(){
         ctx.clearRect(0,0,canvas.width,canvas.height);
         if(keylist.some(r => keys[r] == true)){
-          player.speeds.drag+=player.speeds.accel/1.5;
+          player.speeds.drag+=player.speeds.accel/100;
         } else {
-          player.speeds.drag = 1;
+          player.speeds.drag = 0;
         }
-        if(keys.w)player.y-=(player.speeds.accel/2)*player.speeds.drag;
-        if(keys.s)player.y+=(player.speeds.accel/2)*player.speeds.drag;
-        if(keys.a)player.x-=(player.speeds.accel/2)*player.speeds.drag;
-        if(keys.d)player.x+=(player.speeds.accel/2)*player.speeds.drag;
+        if(keys.w)player.y-=-player.speeds.accel*player.speeds.drag;
+        if(keys.s)player.y+=player.speeds.accel*player.speeds.drag;
+        if(keys.a)player.x-=player.speeds.accel*player.speeds.drag;
+        if(keys.d)player.x+=player.speeds.accel*player.speeds.drag;
         
         ctx.fillStyle = "blue";
         ctx.fillRect(400,400,130,130);
