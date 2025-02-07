@@ -31,7 +31,7 @@
         hitbox: {size: 70}
       }
       
-      let keys = {w:false,a:false,s:false,d:false}
+      let keys = {W:false,A:false,S:false,D:false}
       let keylist = Object.keys(keys);
       document.onkeydown = (e) => {if(keylist.includes(e.key))keys[e.key] = true;}
       document.onkeyup = (e) => {if(keylist.includes(e.key))keys[e.key] = false;}
