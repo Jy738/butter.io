@@ -44,7 +44,7 @@
       function draw(){
         ctx.clearRect(0,0,canvas.width,canvas.height);
         if(keylist.some(r => keys[r] == true)){
-          player.speeds.drag+=player.speeds.accel/100;
+          if(player.speeds.drag < player.speeds.maxAccel/2)player.speeds.drag+=player.speeds.accel/100;
         } else {
           player.speeds.drag = 0;
         }
