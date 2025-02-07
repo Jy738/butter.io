@@ -28,6 +28,7 @@
       let player = {
         x: 0,
         y: 0,
+        rate: 3,
         hitbox: {size: 70}
       }
       
@@ -37,6 +38,7 @@
       document.onkeyup = (e) => {if(keylist.includes(e.key))keys[e.key] = false;}
       
       function draw(){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
         if(keys.w)player.y-=player.rate;
         if(keys.s)player.y+=player.rate;
         if(keys.a)player.x-=player.rate;
