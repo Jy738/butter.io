@@ -48,8 +48,8 @@
            if(keys.a || keys.d && player.speeds.xdrag < player.speeds.maxAccel/2)player.speeds.xdrag+=player.speeds.accel/100;
           else player.speeds.xdrag = 0;
           if(keys.w || keys.s && player.speeds.ydrag < player.speeds.maxAccel/2)player.speeds.ydrag+=player.speeds.accel/100;
-          else if(player.speeds.ydrag > 0)player.speeds.ydrag-=1;
-          else if(player.speeds.ydrag < 0)player.speeds.ydrag+=1;
+          else if(player.speeds.ydrag > 0)player.speeds.ydrag-=0.01;
+          else if(player.speeds.ydrag < 0)player.speeds.ydrag+=0.01;
         }
         if(keys.w)player.y-=player.speeds.accel*player.speeds.ydrag;
         if(keys.s)player.y+=player.speeds.accel*player.speeds.ydrag;
