@@ -28,21 +28,28 @@
       let player = {
         x: 0,
         y: 0,
-        rate: 3,
+        speeds: {
+          accel: 1.5,
+          maxAccel: 4,
+          drag: 1
+        },
         hitbox: {size: 70}
       }
       
       let keys = {w:false,a:false,s:false,d:false}
       let keylist = Object.keys(keys);
-      document.onkeydown = (e) => {if(keylist.includes(e.key)){keys[e.key] = true;console.log(e.key);}}
+      document.onkeydown = (e) => {if(keylist.includes(e.key))keys[e.key] = true;}
       document.onkeyup = (e) => {if(keylist.includes(e.key))keys[e.key] = false;}
       
       function draw(){
         ctx.clearRect(0,0,canvas.width,canvas.height);
-        if(keys.w)player.y-=player.rate;
-        if(keys.s)player.y+=player.rate;
-        if(keys.a)player.x-=player.rate;
-        if(keys.d)player.x+=player.rate;
+        if(keylist.some(r => keys[r] == true)){
+          if(player.speeds.accel < player.speeds.maxAccel)player.speeds.drag+=player.speeds.accel;
+        }
+        if(keys.w)player.y-=player.speeds.drag;
+        if(keys.s)player.y+=player.speeds.drag;
+        if(keys.a)player.x-=player.speeds.drag;
+        if(keys.d)player.x+=player.speeds.drag;
         
         ctx.fillStyle = "blue";
         ctx.fillRect(400,400,130,130);
