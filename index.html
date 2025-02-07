@@ -31,9 +31,9 @@
         hitbox: {size: 70}
       }
       
-      let keys = {W:false,A:false,S:false,D:false}
+      let keys = {w:false,a:false,s:false,d:false}
       let keylist = Object.keys(keys);
-      document.onkeydown = (e) => {if(keylist.includes(e.key))keys[e.key] = true;}
+      document.onkeydown = (e) => {if(keylist.includes(e.key)){keys[e.key] = true;console.log(e.key);}}
       document.onkeyup = (e) => {if(keylist.includes(e.key))keys[e.key] = false;}
       
       function draw(){
