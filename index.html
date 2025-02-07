@@ -22,17 +22,35 @@
         boundingBox: (rect1, rect2) => {
           let horizontalBound = (rect1.x + rect1.width > rect2.x && rect1.x + rect1.width < rect2.x + rect2.width);
           let verticalBound = (rect1.y + rect1.height > rect2.y && rect1.y + rect1.height < rect2.y + rect2.height);
+          return horizontalBound && verticalBound;
         }
       }
       let player = {
-        x: Math.floor(Math.random() * canvas.width),
-        y: Math.floor(Math.random() * canvas.height),
+        x: 0,
+        y: 0,
         hitbox: {size: 70}
       }
       
+      let keys = {w:false,a:false,s:false,d:false}
+      let keylist = Object.keys(keys);
+      document.onkeydown = (e) => {if(keylist.includes(e.key.toLowerCase())keys[e.key.toLowerCase()] = true;}
+      document.onkeyup = (e) => {if(keylist.includes(e.key.toLowerCase())keys[e.key.toLowerCase()] = false;}
+      
       function draw(){
+        if(keys.w)player.y-=player.rate;
+        if(keys.s)player.y+=player.rate;
+        if(keys.a)player.x-=player.rate;
+        if(keys.d)player.x+=player.rate;
+        
         ctx.fillStyle = "blue";
         ctx.fillRect(400,400,130,130);
+
+        ctx.fillStyle = "red";
+        ctx.fillRect(player.x,player.y,player.hitbox.size,player.hitbox.size);
+        if(collisions.boundingBox(
+          {x:player.x,y:player.y,width:player.hitbox.size,height:player.hitbox.size},
+          {x:400,y:400,width:130,height:130}
+        )){console.log("collided");}
         setTimeout(draw,5);
       }
       draw();
