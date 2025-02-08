@@ -50,7 +50,7 @@
         if(keys.a || keys.d)player.speeds.xdrag+=player.speeds.accel/80;
         else if(player.speeds.xdrag >=0)player.speeds.xdrag-=player.speeds.accel/80;
         if(keys.w || keys.s)player.speeds.ydrag+=player.speeds.accel/80;
-        elseif(player.speeds.ydrag >=0) player.speeds.ydrag-=player.speeds.accel/80;
+        else if(player.speeds.ydrag >=0) player.speeds.ydrag-=player.speeds.accel/80;
         if(keys.a)player.speeds.xvelocity = 0-(player.speeds.accel*player.speeds.xdrag);
         if(keys.d)player.speeds.xvelocity = 0+(player.speeds.accel*player.speeds.xdrag);
         if(keys.w)player.speeds.yvelocity = 0-(player.speeds.accel*player.speeds.ydrag);
