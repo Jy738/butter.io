@@ -30,6 +30,7 @@
         y: 0,
         speeds: {
           accel:2,
+          maxaccel:5,
           xaccel: 0,
           yaccel: 0,
           xvelocity: 0,
@@ -47,9 +48,9 @@
       
       function draw(){
         ctx.clearRect(0,0,canvas.width,canvas.height);
-        if(keys.a || keys.d)player.speeds.xdrag+=player.speeds.accel/80;
+        if(keys.a || keys.d && player.speeds.xdrag < player.speeds.maxaccel/2)player.speeds.xdrag+=player.speeds.accel/80;
         else if(player.speeds.xdrag >=0)player.speeds.xdrag-=player.speeds.accel/80;
-        if(keys.w || keys.s)player.speeds.ydrag+=player.speeds.accel/80;
+        if(keys.w || keys.s && player.speeds.ydrag < player.speeds.maxaccel/2)player.speeds.ydrag+=player.speeds.accel/80;
         else if(player.speeds.ydrag >=0) player.speeds.ydrag-=player.speeds.accel/80;
         if(keys.a)player.speeds.xvelocity = 0-(player.speeds.accel*player.speeds.xdrag);
         if(keys.d)player.speeds.xvelocity = 0+(player.speeds.accel*player.speeds.xdrag);
