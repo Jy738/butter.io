@@ -48,8 +48,8 @@
         ctx.clearRect(0,0,canvas.width,canvas.height);
            if(keys.a || keys.d)player.speeds.xdrag+=player.speeds.accel/100;
            if(keys.w || keys.s )player.speeds.ydrag+=player.speeds.accel/100;
-           if(!keys.a && !keys.d && player.speeds.xdrag >= 1){player.speeds.xdrag-=player.speeds.accel/10}
-           if(!keys.w && !keys.s && player.speeds.ydrag >= 1){player.speeds.ydrag-=player.speeds.accel/10;}
+           if(!keys.a && !keys.d && player.speeds.xdrag >= 0){player.speeds.xdrag-=player.speeds.accel/10}
+           if(!keys.w && !keys.s && player.speeds.ydrag >= 0){player.speeds.ydrag-=player.speeds.accel/10;}
           if(player.speeds.xdrag > player.speeds.maxAccel/2)player.speeds.xdrag = player.speeds.maxAccel/2;
           if(player.speeds.ydrag > player.speeds.maxAccel/2)player.speeds.ydrag = player.speeds.maxAccel/2;
         if(keys.w)player.speeds.yvelocity = player.speeds.accel*player.speeds.ydrag;
