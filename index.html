@@ -48,8 +48,12 @@
         ctx.clearRect(0,0,canvas.width,canvas.height);
         if(keys.a || keys.d)player.speeds.xdrag+=0.01;
          if(keys.w || keys.s)player.speeds.ydrag+=0.01;
-        player.x+=player.speeds.xdrag;
-        player.y+=player.speeds.ydrag;
+        if(keys.a)player.speeds.xvelocity = 0-(player.speeds.accel*player.speeds.drag);
+        if(keys.d)player.speeds.xvelocity = 0+(player.speeds.accel*player.speeds.drag);
+        if(keys.w)player.speeds.xvelocity = 0-(player.speeds.accel*player.speeds.drag);
+        if(keys.s)player.speeds.xvelocity = 0+(player.speeds.accel*player.speeds.drag);
+        player.x+=player.speeds.xvelocity;
+        player.y+=player.speeds.yvelocity;
         
         ctx.fillStyle = "blue";
         ctx.fillRect(400,400,130,130);
