@@ -46,10 +46,12 @@
       
       function draw(){
         ctx.clearRect(0,0,canvas.width,canvas.height);
-        if(keys.a)player.speeds.xvelocity-=player.speeds.xaccel;
-        if(keys.d)player.speeds.xvelocity+=player.speeds.xaccel;
-        if(keys.w)player.speeds.yvelocity-=player.speeds.yaccel;
-        if(keys.s)player.speeds.yvelocity+=player.speeds.yaccel;
+        if(keys.a || keys.d)player.speeds.xdrag+=player.speeds.xaccel/8;
+         if(keys.w || keys.s)player.speeds.ydrag+=player.speeds.yaccel/8;
+        if(keys.a)player.speeds.xvelocity=-player.speeds.xaccel*player.speeds.xdrag;
+        if(keys.d)player.speeds.xvelocity=player.speeds.xaccel*player.speeds.xdrag;
+        if(keys.w)player.speeds.yvelocity=-player.speeds.yaccel*player.speeds.ydrag;
+        if(keys.s)player.speeds.yvelocity=player.speeds.yaccel*player.speeds.ydrag;
         player.x+=player.speeds.xvelocity;
         player.y+=player.speeds.yvelocity;
         
